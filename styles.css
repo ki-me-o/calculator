@@ -18,6 +18,15 @@ button {
     box-sizing: border-box;
     padding: 8px;
     margin: 4px;
+    aspect-ratio: 1/1;
+}
+
+.display {
+    text-align: right;
+}
+
+.row-bottom button {
+    aspect-ratio: auto;
 }
 
 .calculator-container {
@@ -45,9 +54,9 @@ button {
     justify-content: flex-start;
 }
 
-.row-top button {
-    /* flex: 0 1 25%; */
-}
+/* .row-top button {
+    flex: 0 1 25%;
+} */
 
 .rows-middle {
     display: flex;
@@ -62,9 +71,9 @@ button {
     align-items: flex-end;
 }
 
-.nine-key .number {
-    /* flex: 0 1 calc(33% - 8px); */
-}
+/* .nine-key .number {
+    flex: 0 1 calc(33% - 8px);
+} */
 
 .rows-middle .column-right {
     flex: 0 1 25%;
@@ -72,6 +81,10 @@ button {
     flex-direction: column;
 
 }
+
+/* .rows-middle .column-right button {
+
+} */
 
 .row-bottom {
     display: flex;
