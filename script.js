@@ -25,25 +25,60 @@ document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', e => {
         displayString = removeLeadingZeros(displayString);
         document.querySelector('.display').innerText = displayString;
+
+        // Temporary debug
+        document.querySelector('.logo').innerText = cacheFloat;
     });
 });
+
+// Add listener functions to operator buttons
+document.querySelectorAll('button.operator').forEach(button => {
+    button.addEventListener('click', e => {
+        activeOperator = e.target.classList[0];
+        // Firstly check if there's already a cacheFloat value. If there is, then this will call the operate function
+            
+        if(cacheFloat === undefined) {
+            cacheFloat = parseFloat(displayString);
+            displayString = '0';
+        } else {
+            let displayFloat = parseFloat(displayString);
+            displayString = operate(cacheFloat, displayFloat, window[activeOperator]).toString();
+            cacheFloat = displayFloat;
+        }
+    });
+});
+
+document.querySelector('button.equals').addEventListener('click', e => {
+    displayFloat = parseFloat(displayString);
+    displayString = operate(cacheFloat, displayFloat, window[activeOperator]).toString();
+    console.log(cacheFloat +
+        ' ' + 
+        activeOperator + 
+        ' ' +
+        displayFloat +
+       ' = ' + 
+       displayString);
+    document.querySelector('.display').innerText = displayString;   
+    cacheFloat = undefined;
+});
+
 
 /* Function declarations */
 
 /* Math functions */
-function calcAdd (a,b) {
+function add (a,b) {
     return a+b;
 }
 
-function calcSubtract(a,b) {
+function subtract(a,b) {
     return a-b;
 }
 
-function calcMultiply(a,b) {
+function multiply(a,b) {
     return a*b;
 }
 
-function calcDivide(a,b) {
+function divide(a,b) {
     if(b === 0) return "ERROR";
     return a / b;
 }
