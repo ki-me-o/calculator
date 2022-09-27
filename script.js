@@ -8,6 +8,26 @@ let cacheFloat,
 initializeNineKey();
 initalizeNumberButtonsListeners();
 
+// clear entry button
+document.querySelector('button.clear-entry').addEventListener('click', e => {
+    displayString = '0';
+});
+
+// clear
+document.querySelector('button.clear').addEventListener('click', e => {
+    displayString = '0';
+    cacheFloat = undefined;
+    activeOperator = undefined;
+});
+
+// Apply displayString to innerText of display div on any button press
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', e => {
+        displayString = removeLeadingZeros(displayString);
+        document.querySelector('.display').innerText = displayString;
+    });
+});
+
 /* Function declarations */
 
 /* Math functions */
@@ -33,6 +53,13 @@ function operate(a,b,operator) {
     return (operator(a,b));
 }
 
+function removeLeadingZeros(string) {
+    while(string.charAt(0) === '0' && string.length > 1) {
+        string = string.slice(1, string.length);
+    }
+    return string;
+}
+
 /* DOM functions */
 function initializeNineKey() {
     const nineKey = document.querySelector('.nine-key');
@@ -45,7 +72,7 @@ function initializeNineKey() {
 }
 
 function initalizeNumberButtonsListeners() {
-    const numKeys = Array.from(document.querySelectorAll('button.number'));
+    const numKeys = document.querySelectorAll('button.number');
     numKeys.forEach(num => {
         num.addEventListener('click', e => {
             console.log('displayString before: ' + displayString);
@@ -53,6 +80,5 @@ function initalizeNumberButtonsListeners() {
             console.log('displayString after press: ' + displayString);
         });
     });
-
-    
 }
+
