@@ -1,4 +1,7 @@
 /* Global variables */
+let cacheValue,
+    displayValue,
+    activeOperator;
 
 
 /* DOM Manipulation */
@@ -21,4 +24,8 @@ function calcMultiply(a,b) {
 function calcDivide(a,b) {
     if(b === 0) return "ERROR";
     return a / b;
+}
+
+function operate(a,b,operator) {
+    return (operator(a,b));
 }
