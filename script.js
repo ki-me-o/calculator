@@ -41,15 +41,20 @@ document.querySelectorAll('button.operator').forEach(button => {
             cacheFloat = parseFloat(displayString);
             displayString = '0';
         } else {
-            let displayFloat = parseFloat(displayString);
-            displayString = operate(cacheFloat, displayFloat, window[activeOperator]).toString();
-            cacheFloat = displayFloat;
+            performOperation(false)
         }
     });
 });
 
 document.querySelector('button.equals').addEventListener('click', e => {
-    displayFloat = parseFloat(displayString);
+    performOperation(true);
+});
+
+
+function performOperation(clearCache = false, ) {
+    let displayFloat = parseFloat(displayString);
+    if(activeOperator === undefined) return "ERROR: activeOperator is undefined!";
+
     displayString = operate(cacheFloat, displayFloat, window[activeOperator]).toString();
     console.log(cacheFloat +
         ' ' + 
@@ -58,10 +63,16 @@ document.querySelector('button.equals').addEventListener('click', e => {
         displayFloat +
        ' = ' + 
        displayString);
-    document.querySelector('.display').innerText = displayString;   
-    cacheFloat = undefined;
-});
-
+    if(clearCache) {
+        clearCache = undefined;
+        activeOperator = undefined;
+    } else {
+        cacheFloat = displayFloat;
+    }
+    document.querySelector('.display').innerText = displayString;  
+    document.querySelector('.logo').innerText = cacheFloat;
+ 
+}
 
 /* Function declarations */
 
