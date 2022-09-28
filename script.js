@@ -36,7 +36,7 @@ document.querySelectorAll('button.operator').forEach(button => {
     button.addEventListener('click', e => {
         // If called after a previous operation, keep that result and 
         // allow new input to entered to operate against old result but don't operate yet
-        
+
         const display = document.querySelector('.display');
         if(display.classList.contains('result')) {
             display.classList.toggle('result');
@@ -48,7 +48,7 @@ document.querySelectorAll('button.operator').forEach(button => {
 
         activeOperator = e.target.classList[0];
 
-        // Firstly check if there's already a cacheFloat value. If there is, then this will call the operate function
+        // Check if there's already a cacheFloat value. If there is, then this will call the operate function
             
         if(cacheFloat === undefined) {
             cacheFloat = parseFloat(displayString);
@@ -62,7 +62,7 @@ document.querySelectorAll('button.operator').forEach(button => {
 document.querySelector('button.equals').addEventListener('click', e => {
     console.log(performOperation(true));
     cacheFloat = undefined;
-    document.querySelector('.logo').innerText = 'LOGO';
+    // document.querySelector('.logo').innerText = 'LOGO';
 });
 
 
@@ -86,7 +86,7 @@ function performOperation(clearCache = false, ) {
     }
     document.querySelector('.display').classList.toggle('result');
     document.querySelector('.display').innerText = displayString;  
-    document.querySelector('.logo').innerText = cacheFloat;
+    // document.querySelector('.logo').innerText = cacheFloat;
     return displayString;
 }
 
