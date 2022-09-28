@@ -71,6 +71,7 @@ function performOperation(clearCache = false, ) {
     } else {
         cacheFloat = displayFloat;
     }
+    document.querySelector('.display').classList.toggle('result');
     document.querySelector('.display').innerText = displayString;  
     document.querySelector('.logo').innerText = cacheFloat;
     return displayString;
@@ -121,8 +122,14 @@ function initializeNineKey() {
 
 function initalizeNumberButtonsListeners() {
     const numKeys = document.querySelectorAll('button.number');
+    const display = document.querySelector('.display');
     numKeys.forEach(num => {
         num.addEventListener('click', e => {
+            if(display.classList.contains('result')){
+                displayString = '';
+                display.innerText = '';
+                display.classList.toggle('result');
+            }
             console.log('displayString before: ' + displayString);
             displayString = displayString.concat('',num.innerText);
             console.log('displayString after press: ' + displayString);
