@@ -47,7 +47,9 @@ document.querySelectorAll('button.operator').forEach(button => {
 });
 
 document.querySelector('button.equals').addEventListener('click', e => {
-    performOperation(true);
+    console.log(performOperation(true));
+    cacheFloat = undefined;
+    document.querySelector('.logo').innerText = 'LOGO';
 });
 
 
@@ -71,7 +73,7 @@ function performOperation(clearCache = false, ) {
     }
     document.querySelector('.display').innerText = displayString;  
     document.querySelector('.logo').innerText = cacheFloat;
- 
+    return displayString;
 }
 
 /* Function declarations */
