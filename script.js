@@ -27,7 +27,7 @@ document.querySelectorAll('button').forEach(button => {
         document.querySelector('.display').innerText = displayString;
 
         // Temporary debug
-        document.querySelector('.logo').innerText = cacheFloat;
+        // document.querySelector('.logo').innerText = cacheFloat;
     });
 });
 

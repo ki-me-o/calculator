@@ -1,6 +1,6 @@
-* {
+/* * {
     outline: 1px solid red;
-}
+} */
 
 body, button {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -19,14 +19,14 @@ button {
     padding: 1px;
     margin: 4px;
     aspect-ratio: 1/1;
-    background-color: beige;
+    background-color: rgb(255, 194, 133);
 }
 
 .calculator-container {
-    background-color: beige;
+    background-color: rgb(255, 194, 133);
     display: flex;
     flex-direction: column;
-    border: 16px solid beige;
+    border: 16px solid rgb(255, 194, 133);
     border-radius: 8px;
 }
 
